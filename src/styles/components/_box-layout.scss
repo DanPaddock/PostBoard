@@ -1,6 +1,6 @@
 .box-layout {
     align-items: center;
-    background: white;
+    background: $off-white;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 .box-layout__box {
-    background: fade-out(white, .15);
+    background: fade-out(rgb(220, 218, 218), .15);
     border-radius: 3px;
     padding: $l-size $m-size;
     text-align: center;
