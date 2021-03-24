@@ -1,12 +1,21 @@
 import React from 'react';
- 
-const Home = () => {
+
+import { Link } from 'react-router-dom';
+import './../styles/styles.scss';
+
+const HomePage = () => {
     return (
-       <div>
-          <h1>Welcome to PostBoard!</h1>
-           <p>Are you a...?</p>
+    <div className = "_content-container">
+       <div className = "box-layout">
+            <div className="box-layout__box">
+                <h1 className="box-layout__title">Post Board</h1>
+                <p>Welcome, are you a Student or a Teacher?</p>
+                <Link className="button" to="/student">Student</Link>
+                <Link className="button" to="/teacher">Teacher</Link>
+            </div>
        </div>
+    </div>
     );
 }
- 
-export default Home;
+
+export default HomePage;
