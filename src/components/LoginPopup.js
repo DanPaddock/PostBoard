@@ -16,7 +16,7 @@ const LoginPopup = () => {
   return (
     <div className="box-layout">
       <div className="box-layout__box">
-        <h1 className="box-layout__title">Post Board</h1>
+        <h1 className="box-layout__title">Postboard</h1>
         <p>Welcome, are you a Student or a Teacher?</p>
         <Popup
           trigger={<button className="button">Student</button>}

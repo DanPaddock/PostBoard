@@ -1,4 +1,4 @@
-# Post Board - Project for CS5340
+# Postboard - Project for CS5340
 
 Authors: Dan Paddock and Sameera Desai
 
