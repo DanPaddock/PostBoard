@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { Scrollbars } from "react-custom-scrollbars";
 import SideBarConfig from "./MenuConfig";
 import DropdownMenu from "./DropdownMenu";
-import Dropdown from "react-bootstrap/Dropdown";
-
-import userImage from "../../styles/images/user.jpg";
 
 let renderCustomHorizontalThumb = ({ style, ...props }) => {
   const thumbStyle = {
@@ -80,7 +76,7 @@ function SideBarMenu() {
       <div className="sidebar-content">
         <div>
           <div className="sidebar-item sidebar-brand">
-            <a href="#/header">Postboard</a>
+            <a href="/">Postboard</a>
           </div>
           <div className=" sidebar-item sidebar-menu">
             <ul>{renderSideBarMenuItem()}</ul>
