@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { DateRangePicker } from "react-dates";
 import {
   setTextFilter,
+  setPinnedFilter,
   setTypeFilter,
   setCourseFilter,
   sortByDate,
@@ -80,6 +81,7 @@ class DashboardListFilters extends React.Component {
   state = {
     calendarFocused: null,
   };
+
   onDatesChange = ({ startDate, endDate }) => {
     this.props.dispatch(setStartDate(startDate));
     this.props.dispatch(setEndDate(endDate));
@@ -91,6 +93,7 @@ class DashboardListFilters extends React.Component {
     this.props.setTextFilter(e.target.value);
   };
   onSortChange = (e) => {
+    this.props.setPinnedFilter();
     if (e.value === "date") {
       this.props.sortByDate();
     } else if (e.value === "type") {
@@ -168,6 +171,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setPinnedFilter: (pinned) => dispatch(setTextFilter(pinned)),
   setCourseFilter: (text) => dispatch(setCourseFilter(text)),
   setTypeFilter: (text) => dispatch(setTypeFilter(text)),
   sortByDate: () => dispatch(sortByDate()),

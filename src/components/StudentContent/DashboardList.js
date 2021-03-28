@@ -18,6 +18,7 @@ const DashboardList = (props) => (
         </div>
       ) : (
         props.assignments.map((assignment) => {
+          console.log(assignment);
           return <DashboardListItem key={assignment.id} {...assignment} />;
         })
       )}

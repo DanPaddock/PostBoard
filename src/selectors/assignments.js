@@ -2,7 +2,7 @@ import moment from "moment";
 
 // Get visible assignments
 
-export default (assignments, { text, sortBy, startDate, endDate }) => {
+export default (assignments, { text, sortBy, startDate, endDate, pinned }) => {
   return assignments
     .filter((assignment) => {
       const dueDateMoment = moment(assignment.dueDate);
@@ -22,13 +22,19 @@ export default (assignments, { text, sortBy, startDate, endDate }) => {
         .toLowerCase()
         .includes(text.toLowerCase());
       var arr = [titleMatch, typeMatch, courseMatch];
-      var textMatch = arr.reduce(function (a, b) {
-        return a.length > b.length ? a : b;
-      }, "");
-
-      return startDateMatch && endDateMatch && textMatch;
+      return (
+        startDateMatch &&
+        endDateMatch &&
+        (titleMatch || typeMatch || courseMatch)
+      );
     })
     .sort((a, b) => {
+      if (b.pinned) {
+        return 1;
+      }
+      if (a.pinned) {
+        return -1;
+      }
       if (sortBy === "date") {
         return a.dueDate < b.dueDate ? 1 : -1;
       } else if (sortBy === "type") {

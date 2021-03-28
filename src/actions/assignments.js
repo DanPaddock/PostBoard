@@ -25,8 +25,14 @@ export const removeAssignment = ({ id } = {}) => ({
   id,
 });
 
-export const editAssignment = (id, updates) => ({
+export const editAssignment = (id, updates, isPinned) => ({
   type: "EDIT_ASSIGNMENT",
   id,
   updates,
 });
+
+export const startEdit = (id, updates) => {
+  return (dispatch, getState) => {
+    dispatch(editAssignment(id, updates));
+  };
+};

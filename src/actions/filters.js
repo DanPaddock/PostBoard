@@ -4,6 +4,12 @@ export const setTextFilter = (text = "") => ({
   text,
 });
 
+// SET_PINNED_FILTER
+export const setPinnedFilter = (pinned = false) => ({
+  type: "SET_PINNED_FILTER",
+  pinned,
+});
+
 // SET_COURSE_FILTER
 export const setCourseFilter = (text = "") => ({
   type: "SET_COURSE_FILTER",
