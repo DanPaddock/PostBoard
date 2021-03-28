@@ -4,7 +4,7 @@ import "./../styles/styles.scss";
 
 const HomePage = () => {
   return (
-    <div className="content-container">
+    <div className="centered">
       <LoginPopup />
     </div>
   );

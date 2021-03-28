@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GlobalAppContext } from "./../../index.js";
-import reactLogo from "../../styles/images/logo.svg";
 
 function IndexContent() {
   const { toggled, setToggled, hasBackground, setHasBackground } = useContext(

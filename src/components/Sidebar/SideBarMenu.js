@@ -2,15 +2,6 @@ import React, { useState } from "react";
 import SideBarConfig from "./MenuConfig";
 import DropdownMenu from "./DropdownMenu";
 
-let renderCustomHorizontalThumb = ({ style, ...props }) => {
-  const thumbStyle = {
-    backgroundColor: `rgba(255,255,255,0.3)`,
-    width: "4px",
-    right: "-2px",
-  };
-  return <div style={{ ...style, ...thumbStyle }} {...props} />;
-};
-
 function SideBarMenu() {
   let initialMenuItems = [];
   SideBarConfig.menus.forEach((menu, index) => {
@@ -55,21 +46,6 @@ function SideBarMenu() {
           return liElementList;
         });
   };
-
-  const CustomDropDownToggle = React.forwardRef(
-    ({ children, onClick }, ref) => (
-      <a
-        href="#/nothing"
-        ref={ref}
-        onClick={(e) => {
-          e.preventDefault();
-          onClick(e);
-        }}
-      >
-        {children}
-      </a>
-    )
-  );
 
   return (
     <nav id="sidebar" className="sidebar-wrapper">

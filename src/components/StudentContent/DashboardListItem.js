@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-import numeral from "numeral";
 import "../../styles/styles.scss";
 import { setPinnedFilter } from "../../actions/filters";
 import { editAssignment } from "../../actions/assignments";
@@ -9,6 +8,18 @@ import { editAssignment } from "../../actions/assignments";
 export class DashboardListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    moment.locale("en", {
+      calendar: {
+        lastDay: "[Yesterday]",
+        sameDay: "[Today]",
+        nextDay: "[Tomorrow]",
+        lastWeek: "[last] dddd",
+        nextWeek: "dddd",
+        sameElse: "L",
+      },
+    });
+    // moment.locale();
     this.props = props;
     this.state = {
       id: this.props.id,
@@ -19,15 +30,10 @@ export class DashboardListItem extends React.Component {
       type: this.props.type,
       pinned: this.props.pinned,
     };
-
-    console.log("CONSTRUCTOR: " + this.state.pinned);
   }
 
   pinAction = (e) => {
-    console.log("PINNED ACTION1: " + this.props.pinned);
-    console.log("PINNED ACTION2: " + this.state.pinned);
     this.setState({ pinned: !this.props.pinned }, () => {
-      console.log("PINNED ACTION3: " + this.state.pinned);
       this.props.editAssignment(this.props.id, this.state);
     });
     this.props.setPinnedFilter(this.state);
@@ -37,6 +43,7 @@ export class DashboardListItem extends React.Component {
     return (
       <div className="list-item">
         <div>
+          <span>{moment(this.props.dueDate).calendar()}</span>
           <h3 className="list-item__title">{this.props.type}</h3>
           <span className="list-item__sub-title">{this.props.course}</span>
         </div>
@@ -45,7 +52,7 @@ export class DashboardListItem extends React.Component {
           <button className="button" onClick={this.pinAction}>
             <b>{this.state.pinned ? "Unpin" : "Pin"}</b>
           </button>
-          {moment(this.props.dueTime).format("hh:mm")}
+          {moment(this.props.dueTime).format("LT")}
         </h3>
       </div>
     );

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { DateRangePicker } from "react-dates";
 import {
   setTextFilter,
-  setPinnedFilter,
   setTypeFilter,
   setCourseFilter,
   sortByDate,
@@ -93,7 +92,6 @@ class DashboardListFilters extends React.Component {
     this.props.setTextFilter(e.target.value);
   };
   onSortChange = (e) => {
-    this.props.setPinnedFilter();
     if (e.value === "date") {
       this.props.sortByDate();
     } else if (e.value === "type") {
@@ -125,38 +123,36 @@ class DashboardListFilters extends React.Component {
 
   render() {
     return (
-      <div className="content-container">
-        <div className="input-group">
-          <div className="input-group__item">
-            <input
-              type="text"
-              className="text-input"
-              placeholder="Search assignments"
-              value={this.props.filters.text}
-              onChange={this.onTextChange}
-            />
-          </div>
-          <div className="input-group__item">
-            <Select
-              className="select"
-              defaultValue={defaultOptions[0]}
-              options={groupedOptions}
-              formatGroupLabel={formatGroupLabel}
-              onChange={this.onSortChange}
-            />
-          </div>
-          <div className="input-group__item">
-            <DateRangePicker
-              startDate={this.props.filters.startDate}
-              endDate={this.props.filters.endDate}
-              onDatesChange={this.onDatesChange}
-              focusedInput={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              showClearDates={true}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
-          </div>
+      <div className="input-group">
+        <div className="input-group__item">
+          <input
+            type="text"
+            className="text-input"
+            placeholder="Search assignments"
+            value={this.props.filters.text}
+            onChange={this.onTextChange}
+          />
+        </div>
+        <div className="input-group__item">
+          <Select
+            className="select"
+            defaultValue={defaultOptions[0]}
+            options={groupedOptions}
+            formatGroupLabel={formatGroupLabel}
+            onChange={this.onSortChange}
+          />
+        </div>
+        <div className="input-group__item">
+          <DateRangePicker
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            onDatesChange={this.onDatesChange}
+            focusedInput={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            showClearDates={true}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
         </div>
       </div>
     );

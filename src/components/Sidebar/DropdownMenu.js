@@ -1,16 +1,6 @@
 import React /*, { useState } */ from "react";
-import { animated } from "react-spring";
-import { Spring } from "react-spring";
 
 function DropdownMenu(props) {
-  let closedStyle = {
-    height: 0,
-  };
-
-  let openStyle = {
-    height: "auto",
-  };
-
   // state used when trying to let all menu open
   //let [open, setOpen] =useState(props.active);
 

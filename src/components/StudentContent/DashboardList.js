@@ -5,7 +5,7 @@ import selectAssignments from "../../selectors/assignments";
 import "../../styles/styles.scss";
 
 const DashboardList = (props) => (
-  <div className="content-container">
+  <div>
     <div className="list-header">
       <div className="show-for-mobile">Assignments</div>
       <div className="show-for-desktop">Assignment</div>
@@ -18,7 +18,6 @@ const DashboardList = (props) => (
         </div>
       ) : (
         props.assignments.map((assignment) => {
-          console.log(assignment);
           return <DashboardListItem key={assignment.id} {...assignment} />;
         })
       )}
